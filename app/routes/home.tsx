@@ -3,8 +3,8 @@ import { Wizard } from "../wizard/wizard";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Sombra React Challenge" },
+    { name: "description", content: "Welcome to Wizard list!" },
   ];
 }
 
