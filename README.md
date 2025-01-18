@@ -1,6 +1,6 @@
 # Welcome to Sombra React Challenge!
 
-![Display wizard list grid](image.png)
+![Display wizard list grid](image-1.png)
 
 A modern, production-ready template for building full-stack React applications using React Router.
 

@@ -5,6 +5,7 @@
  * 3. For each wizard, list out each elixir they have (name and effect).
  */
 import { useEffect, useState } from "react";
+import { index } from '@react-router/dev/routes';
 
 /**
  * The data comes from https://wizard-world-api.herokuapp.com/swagger/index.html
@@ -77,26 +78,22 @@ export function Wizard() {
   }, []);
 
   return (
-    <>
-      <span>{errorMessage}</span>
+    <div className="d-flex px-4 py-2">
+    {errorMessage && (<span>{errorMessage}</span>)}      
       {isLoading === true ? (
         <>{'...Loading'}</>
       ) : (
-        <ul>
+        <ul className="list-outside">
           {isLoading === false &&
-            wizards.map((wizard) => {
+            wizards.map((wizard, index) => {
               return (
                 <li key={wizard.id}>
-                  <span>{`${wizard.firstName ?? ""} ${
-                    wizard.lastName ?? ""
-                  }`}</span>
+                  <span className="font-bold">{`Wizard.${index+1}: ${wizard.firstName ?? ""} ${ wizard.lastName ?? ""}`}</span>
                   <span>
-                    <ul>
-                      {wizard?.elixirs?.map((elixir) => {
+                    <ul className="list-inside">
+                      {wizard?.elixirs?.map((elixir, index) => {
                         return (
-                          <li
-                            key={elixir.id}
-                          >{`${elixir.name}: ${elixir.effect}`}</li>
+                          <li key={elixir.id} className="ml-2"><span className="font-semibold">{`Elixir.${index+1}: `}</span>{`${elixir.name}: ${elixir.effect}`}</li>
                         );
                       })}
                     </ul>
@@ -106,6 +103,6 @@ export function Wizard() {
             })}
         </ul>
       )}
-    </>
+    </div>
   );
 }
